@@ -1,6 +1,6 @@
 '''
 Run with:
-    python -m streamlit run dashboard.py
+    python -m streamlit run ui.py
 '''
 
 import streamlit as st
