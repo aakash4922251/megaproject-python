@@ -9,9 +9,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# st.set_page_config(layout="wide") #make Streamlit wider
-sns.set_style("darkgrid")
-plt.rcParams["font.size"] = 10 #larger text for visiblity
+st.set_page_config(layout="wide") #make Streamlit wider
+sns.set_style("darkgrid") #graph will have grid lines
+plt.rcParams["font.size"] = 10 #larger text for visiblity everywhere 
 
 # st.title("EV BMS Data Analysis")
 st.markdown(
@@ -34,16 +34,16 @@ st.header("Battery Data")
 st.dataframe(df)
 
 latest = df.iloc[-1] #latest battery reading
-print(latest)
+# st.write(latest)
 
 st.subheader("Live Battery Status")
-col1, col2, col3, col4  = st.columns(4)
+col1, col2, col3, col4  = st.columns(4) #create 4 columns
 col1.metric("Battery SOC", f"{latest['soc']}%")
-col2.metric("Volatge", f"{latest['voltage']} V")
+col2.metric("Voltage", f"{latest['voltage']} V")
 col3.metric("Temperature", f"{latest['temperature']} °C")
 col4.metric("Battery Health", f"{latest['soh']}%")
 
-df = pd.read_csv("data/bms_data.csv")
+# df = pd.read_csv("data/bms_data.csv")
 df["timestamp"] = pd.to_datetime(df["timestamp"]) #This converts text time into real datetime objects.
 
 
